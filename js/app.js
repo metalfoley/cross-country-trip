@@ -14,7 +14,7 @@ $(document).ready(function() {
                     photoset += '<img src="' + img_src_small + '"  alt="' + item.title + '"/></a></li>';
                 }); //END LOOP
                 photoset += "</ul>";
-                $("#flickr").html(photoset).fadeIn(200);
+                $("#flickr").html(photoset);
 
                 ///////CREATE FILTER BUTTONS///////////
                 (function() {
@@ -30,7 +30,7 @@ $(document).ready(function() {
                         var tags = $(this).data('tags'); //GET EACH IMAGES TAGS
 
                         if (tags) {
-                            tags.split(',').forEach(function(tagName) { ///********try to remove .split() later to test if code still works*******////////
+                            tags.split(',').forEach(function(tagName) {
                                 if (tagged[tagName] == null) {
                                     tagged[tagName] = [];
                                 }
@@ -82,7 +82,11 @@ $(document).ready(function() {
         });
     }
 
-    flickr("72157647697604318"); //Flickr ajax load set Cross Country Trip
+      ///////FIND SET NUMBER
+      (function() {
+      var gallery = $('body').data('set');//SET IS FOUND IN BODY ELEMENT
+      flickr(gallery); //Flickr ajax load set Cross Country Trip
+    }());
 
     ///////Dropdown Menu For Mobile/////////
     (function() {
@@ -121,47 +125,53 @@ $(document).ready(function() {
         $top.click(function() {
             $('body').animate({
                 scrollTop: 0
-            }, 800);
+            }, 1000);
             return false;
         });
     }()); //END FUNCTION
 
     ////////LIGHTBOX////////////////
     function lightbox() {
-        var $overlay = $('<div id="overlay"></div>');
-        var $img = $('<img>');
-        var $caption = $("<figcaption></figcaption>");
-        var $figure = $('<figure></figure>');
+      var $overlay = $('<div id="overlay"></div>');
+      var $img = $('<img>');
+      var $caption = $("<figcaption></figcaption>");
+      var $figure = $('<figure></figure>');
+      // var $next = $('<button>Next</button>')
 
-        $('body').append($overlay);
-        $overlay.append($figure);
-        $figure.append($img);
-        $figure.append($caption);
-        $('#flickr').on('click', 'a.bigphoto', function(e) {
-            e.preventDefault();
-            var href = $(this).attr('href');
-            $img.attr("src", href);
-            $overlay.show();
-            var captionText = $(this).children('img').attr('alt');//CAPTURE ALT TEXT AS A CAPTION
-            $caption.text(captionText);
+      $('body').append($overlay);
+      $overlay.append($figure);
+      $figure.append($img);
+      $figure.append($caption);
+      // $overlay.append($next);
 
+      $('#flickr').on('click', 'a.bigphoto', function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href');
+        $img.attr("src", href);
+        $overlay.show();
+        var captionText = $(this).children('img').attr('alt');//CAPTURE ALT TEXT AS A CAPTION
+        $caption.text(captionText);
+        var src = $('.activelightimg').attr('src');//GET IMAGE SOURCE
+        $img.addClass('activelightimg');
 
+        // $next.on('click', function(e) {
+        //   e.preventDefault();
+        //   // $('#flickr').filter('a.bigphoto').find(src);
+        //   console.log(src);
+        // });
 
-            $overlay.click(function(){
-              $overlay.hide();
+        $overlay.click(function(){
+          $overlay.hide();
+          $img.removeClass('activelightimg');
         });
-        });
+      });
     }
-
+//create next button
+//create click event attached to next button
+//find current (this) images src in #flickr or .bigphoto
+//get next href
+//make updated href new img src
     lightbox();
 
-    // var currentpage = 1;
-
-    // $(window).scroll(function() {
-    //   if ($(this).scrollTop() > 200) {
-    //     currentpage++;
-    //     console.log("page" + currentpage);
-    //   }
-    //   });
 
 }); //END PAGE LOAD

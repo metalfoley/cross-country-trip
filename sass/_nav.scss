@@ -1,3 +1,8 @@
+header.headfixed {
+  position: fixed;
+  width: 100%;
+}
+
 #nav {
   text-align: center;
   background-color: #6C7FAB;
@@ -7,12 +12,15 @@
   z-index: 10;
 
   h1 {
+    letter-spacing: .125rem;
+    word-spacing: .125rem;
     @extend %vertical-align;
     @extend %inline-block;
     width: 75%;
     @include text-shadow (0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1));
 
     a {
+      font-size: 2rem;
       @extend %displayfont;
     }
   }
@@ -26,7 +34,9 @@
 
     a {
       color: $menu-bg-color;
+      font-size: 2rem;
       @include text-shadow (0px 4px 3px rgba(0,0,0,0.1), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1));
+      cursor: pointer;
     }
   }
 }
@@ -67,9 +77,8 @@
     margin: 0 auto;
 
       >li {
-        border-bottom: 1px solid rgba(69, 77, 134, .8);
-        margin: 2.5px 0;
-        padding: 2.5px 0;
+        margin: .375rem 0;
+        padding: .5rem 0;
         font-size: 2rem;
 
         &:hover {

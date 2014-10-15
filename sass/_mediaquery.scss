@@ -1,12 +1,24 @@
 
 @media only screen and (min-width: 321px) {
+
+ #nav h1 a, #nav div a {
+  font-size: 2.5rem;
+ }
+
   #gallery li {
     margin: 1em 2.5%;
     width: 45%;
   }
 
-section .mainimg {
+section {
+
+  .marginnone {
+  margin-top: 0;
+  }
+
+  .mainimg {
     max-width: 600px;
+  }
 }
 
   div.social {
@@ -22,10 +34,13 @@ section .mainimg {
   }
 }
 
-#overlay img {
-  left: 10%;
-  width: 80%;
+#overlay {
+
+  img {
+  margin-top: 1%;
+  width: 70%;
   max-width: 767px;
+  }
 }
 
 /* iPads (landscape) ----------- */
@@ -34,9 +49,13 @@ and (min-device-width : 768px)
 and (max-device-width : 1024px)
 and (orientation : landscape) {
 
-  #gallery li {
-    margin: 1em 1.25%;
-    width: 22.5%;
+  #gallery {
+    padding-left: 40px;
+
+    li {
+      margin: 1em 1.25%;
+      width: 22.5%;
+    }
   }
 
   img[src="img/headerroad.png"] {
@@ -48,6 +67,53 @@ and (orientation : landscape) {
         }
   #galleryfilterlarge {
     display: block;
+  }
+
+section {
+  margin: 107px auto 5px;
+
+  hr {
+    display: block;
+    clear: both;
+    @include text-shadow(0 0 .5px .5px $nav-menu-bg);
+    @include opacity(.5);
+  }
+
+  h2 {
+    font-size: 3rem;
+    padding: 2rem 0 2rem 64px;
+    letter-spacing: .125rem;
+    clear: both;
+  }
+
+  img {
+    width: 35%;
+    margin: 0 1rem;
+    @include trailer(3);
+  }
+
+  img:nth-child(even) {
+    float: left;
+  }
+
+  img:nth-child(odd) {
+    float: right;
+  }
+
+  #portlandimg {
+      display: none;
+    }
+
+  p {
+    margin-top: rhythm(0, $base-font-size);
+  }
+}
+
+#overlay {
+
+  img {
+  max-width: 1024px;
+  // margin-top: 10%;
   }
 }
 
@@ -80,15 +146,15 @@ and (orientation : landscape) {
     }
   }
 }
-
-#overlay img {
-  // left: 12.5%;
-  // width: 75%;
-  // max-width: 1024px;
-  margin-top: 10%;
 }
 
+
 @media only screen and (min-width: 768px) {
+
+
+.marginnone {
+  margin: 0 auto 5px;
+}
 
 #backtotop {
   position: fixed;
@@ -115,36 +181,64 @@ and (orientation : landscape) {
 }
 
 section {
+  margin: 107px auto 5px;
 
-    div.mainimg {
-        max-width: 1000px;
-    }
-
-    #galleryfilterlarge {
+    hr {
       display: block;
+      clear: both;
+      @include text-shadow(0 0 .5px .5px $nav-menu-bg);
+      @include opacity(.5);
     }
 
-    img[src="img/headerroad.png"] {
+    h2 {
+      font-size: 3rem;
+      padding: 2rem 0 2rem 64px;
+      letter-spacing: .125rem;
+      clear: both;
+    }
+
+    img {
+      width: 35%;
+      margin: 0 1rem;
+      @include trailer(3);
+    }
+
+    img:nth-child(even) {
+      float: left;
+    }
+
+    img:nth-child(odd) {
+      float: right;
+    }
+
+    #portlandimg {
+      display: none;
+    }
+
+    p {
+      margin-top: rhythm(0, $base-font-size);
+    }
+      #galleryfilterlarge {
         display: block;
       }
 
-    #gallery li {
-      margin: 1em 1.25%;
-      width: 22.5%;
-    }
+      #gallery {
+        padding-left: 40px;
+
+        li {
+          margin: 1em 1.25%;
+          width: 22.5%;
+        }
+      }
 }
 
+#overlay {
 
-#imglarge {
-  display: block;
-}
-
-#imgsmall {
-  display: none;
-}
-
-#imgmedium {
-  display: none;
+  img {
+  margin-top: 5%;
+  width: 75%;
+  max-width: 1224px;
+  }
 }
 
 nav {
@@ -165,8 +259,8 @@ nav {
     // font-size: 4rem;
     word-spacing: .75rem;
     letter-spacing: .25rem;
-    padding-bottom: .75rem;
-    margin: .5rem auto;
+    padding: 1rem 0;
+    margin: .75rem auto .5rem;
 
     a {
         font-size: 4rem;
@@ -187,18 +281,17 @@ nav {
 .menu {
 // width: 100%;
 display: inline-block;
-padding: 0;
 position: relative;
 z-index: 2;
 
   ul {
+    padding: 0;
 
     >li {
       float: right;
       display: inline-block;
       position: relative;
       border: none;
-      padding: .5rem;
       margin: 0;
 
       &:first-child {
@@ -212,62 +305,12 @@ z-index: 2;
         @include opacity(1);
       }
 
-      &:nth-child(2) {
-        margin-left: 2.5%;
-      }
-
     a {
       display: block;
-      padding: 0 1rem;
     }
   }
 }
-
-
-
-// .substates {
-//   display: block;
-//   padding: 0;
-//   margin: 0;
-//   position: absolute;
-//   // top: -425px;
-//   top: 100%;
-//   left: 0;
-//   z-index: -1;
-//   @include opacity(0);
-//   background-color: shade($menu-bg-color, 10%);
-//   @include single-transition(top, .3s, ease-out);
-//   @include single-transition(opacity, .3s, ease-out);
-
-//   li {
-//     width: 100%;
-//     display: block;
-//     text-align: center;
-//     border-bottom: 1px solid shade($menu-bg-color, 30%);
-
-//     &:last-child {
-//         border: none;
-//     }
-
-//     &:hover {
-//       background-color: $menu-bg-color;
-//     }
-
-//     a {
-//       padding: .5rem;
-//       font-size: 1rem;
-//       color: $menu-text-color;
-//     }
-
-//   }
-// }
 }
-
-  section h2 {
-    font-size: 3rem;
-    padding: 2rem 0;
-    letter-spacing: .125rem;
-  }
 
   ul.footerlist {
       font-size: 1.5rem;
@@ -294,17 +337,11 @@ z-index: 2;
     font-size: 5rem;
     float: left;
     vertical-align: middle;
-    padding-left: 2rem;
+    padding: 2rem;
     @include rotate(-5deg);
     margin-left: 2rem;
     }
   }
-}
-
-#overlay img {
-  left: 12.5%;
-  width: 75%;
-  max-width: 1224px;
 }
 /* Desktops and laptops ----------- */
 @media only screen and (min-width: 1224px) {

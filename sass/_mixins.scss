@@ -1,3 +1,5 @@
+
+
 @mixin cf {
 	.cf:before,
 .cf:after {
@@ -49,56 +51,8 @@
   display: none;
 }
 
-@mixin sprite-hover($sprite_dir, $off_state, $hover_state, $speed: .5s) {
-  $sprites: sprite-map("#{$sprite_dir}/*.png");
-  $width: image-width(sprite_file($sprites, $off_state));
-  $height: image-height(sprite_file($sprites, $off_state));
-  @include hide-text;
-  width: $width;
-  height: $height;
-  background: sprite($sprites, $off_state) no-repeat;
-  display: block;
-  position: relative;
-  span {
-    width: $width;
-    height: $height;
-    background: sprite($sprites, $hover_state) no-repeat;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    @include transition(opacity, $speed, ease-in-out);
-    .no-opacity & {
-      visibility: hidden;
-    }
-  }
-  &:hover span {
-    opacity: 1;
-    .no-opacity & {
-      visibility: visible;
-    }
-  }
-}
 
 @mixin img-dimension($img, $size) {
   width: image-width($img) / $size;
   height: image-height($img) / $size;
-}
-
-@mixin bp($point) {
-  @if $point == steven {
-    @media only screen and (min-width : 1024px) { @content; } //Computer
-  }
-
-  @else if $point == iulia {
-    @media only screen
-    and (min-device-width : 768px)
-    and (max-device-width : 1023px)
-    and (orientation : landscape)  { @content; } //Tablet(landscape)
-  }
-
-  @else if $point == olivia {
-    @media only screen and (min-width: 321px)  { @content; } //Mobile(landscape) & Tablet(portrait)
-  }
 }

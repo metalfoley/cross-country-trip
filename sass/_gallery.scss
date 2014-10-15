@@ -1,8 +1,8 @@
 #gallery {
   width: $thumb-width * 2 + 10;
   list-style-type: none;
-  padding: 0;
   overflow: auto;
+  padding-left: 0;
 
   li {
     float: left;
@@ -39,12 +39,7 @@
   text-overflow: ellipsis;
 
   img {
-    // position: absolute;
-    // top: 10%;
-    // left: 25%;
-    // vertical-align: middle;
-    // width: 100%;
-    // max-width: 320px;
+    width: 100%;
     border: .5rem solid #ddd;
     border-bottom: 2rem solid #ddd;
   }

@@ -153,24 +153,12 @@ $(document).ready(function() {
         $caption.text(captionText);
         var src = $('.activelightimg').attr('src');//GET IMAGE SOURCE
         $img.addClass('activelightimg');
-
-        // $next.on('click', function(e) {
-        //   e.preventDefault();
-        //   // $('#flickr').filter('a.bigphoto').find(src);
-        //   console.log(src);
-        // });
-
         $overlay.click(function(){
           $overlay.hide();
           $img.removeClass('activelightimg');
         });
       });
     }
-//create next button
-//create click event attached to next button
-//find current (this) images src in #flickr or .bigphoto
-//get next href
-//make updated href new img src
     lightbox();
 
 

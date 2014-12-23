@@ -72,7 +72,9 @@ section {
 
   img {
     @include box-shadow(0 0 5px 0 #000);
-    width: 100%;
+    max-width: 340px;
+    display: block;
+    margin: 0 auto;
   }
 
   span {
